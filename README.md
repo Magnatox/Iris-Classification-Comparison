@@ -60,12 +60,12 @@ f1-score_random_Forest : 0.978
 
 # Conclusion
 
-    Based on the results from our classification models:
+Based on the results from our classification models:
 
-    Random Forest, Logistic Regression, Decision Tree, and KNN did a really good job. They all got a high score of 97.8% for accuracy, which means they were mostly right when predicting the type of Iris flower.
+- Random Forest, Logistic Regression, Decision Tree, and KNN did a really good job. They all got a high score of 97.8% for accuracy, which means they were mostly right when predicting the type of Iris flower.
 
-    Naive Bayes did even better, getting a perfect score of 100% accuracy. It means it didn't make any mistakes in predicting the Iris flower types. It was precise, remembered all the actual flowers, and found a good balance between precision and recall.
+- Naive Bayes did even better, getting a perfect score of 100% accuracy. It means it didn't make any mistakes in predicting the Iris flower types. It was precise, remembered all the actual flowers, and found a good balance between precision and recall.
 
-    Support Vector Machine (SVC) did a bit worse than the others with an accuracy of 93.3%. It means it made a few more mistakes compared to the other models. It wasn't as precise, didn't remember all the actual flowers.
+- Support Vector Machine (SVC) did a bit worse than the others with an accuracy of 93.3%. It means it made a few more mistakes compared to the other models. It wasn't as precise, didn't remember all the actual flowers.
 
 Overall, all the models did a good job at predicting the type of Iris flower, but Naive Bayes performed the best. Which model to use might depend on things like how fast it needs to work or how easy it is to understand.
