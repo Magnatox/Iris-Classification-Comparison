@@ -16,7 +16,8 @@ import missingno as msno
 
 # Loading dataset and checking missing values
 iris=pd.read_csv('Iris.csv')    
-msno.bar(iris,figsize=(8,6),color='skyblue')
+msno.bar(iris.drop(columns=['Id']), figsize=(8, 6), color='skyblue')
+plt.title("Missing Values Check")
 
 
 # Splitting features and target variable
