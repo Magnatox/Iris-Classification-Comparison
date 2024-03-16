@@ -1,4 +1,3 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -14,24 +13,25 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import accuracy_score ,precision_score,recall_score,f1_score
 from sklearn.preprocessing import LabelEncoder
 import missingno as msno
-import numpy as np
 
-#Loading dataset and checking missing values
+# Loading dataset and checking missing values
 iris=pd.read_csv('Iris.csv')    
 msno.bar(iris,figsize=(8,6),color='skyblue')
 
 
-X=iris.iloc[:,0:4].values
-y=iris.iloc[:,4].values
+# Splitting features and target variable
+X = iris.drop(columns=['Id', 'Species']).values
+y = iris['Species'].values
 
+# Encoding target variable
 le = LabelEncoder()
 y = le.fit_transform(y)
 
-#Model Select
 
+# Splitting data
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=0)
 
-#random forest
+# Random forest
 random_forest = RandomForestClassifier(n_estimators=100)
 random_forest.fit(X_train, y_train)
 Y_prediction = random_forest.predict(X_test)
@@ -50,7 +50,7 @@ print('precision_random_Forest : %.3f' %precision)
 print('recall_random_Forest : %.3f' %recall)
 print('f1-score_random_Forest : %.3f' %f1)
 
-#logistics regression start
+# Logistics regression
 logreg = LogisticRegression(solver= 'lbfgs',max_iter=400)
 logreg.fit(X_train, y_train)
 Y_pred = logreg.predict(X_test)
@@ -70,7 +70,7 @@ print('recall_Logistic Regression: %.3f' %recall)
 print('f1-score_Logistic Regression : %.3f' %f1)
 
 
-#LinearSVC
+# LinearSVC
 linear_svc = LinearSVC(max_iter=4000,dual=False)
 linear_svc.fit(X_train, y_train)
 Y_pred = linear_svc.predict(X_test)
@@ -88,7 +88,7 @@ print('precision_SVC: %.3f' %precision)
 print('recall_SVC: %.3f' %recall)
 print('f1-score_SVC : %.3f' %f1)
 
-#DecisionTreeClassifier
+# DecisionTreeClassifier
 decision_tree = DecisionTreeClassifier() 
 decision_tree.fit(X_train, y_train)  
 Y_pred = decision_tree.predict(X_test) 
@@ -107,7 +107,7 @@ print('recall_DecisionTree: %.3f' %recall)
 print('f1-score_DecisionTree : %.3f' %f1)
 
 
-#GaussianNB
+# GaussianNB
 gaussian = GaussianNB()
 gaussian.fit(X_train, y_train)
 Y_pred = gaussian.predict(X_test) 
@@ -125,7 +125,7 @@ print('precision_Naive Bayes: %.3f' %precision)
 print('recall_Naive Bayes: %.3f' %recall)
 print('f1-score_Naive Bayes : %.3f' %f1)
 
-#KNeighborsClassifier
+# KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors=3)
 knn.fit(X_train, y_train)
 Y_pred = knn.predict(X_test)
@@ -143,7 +143,7 @@ print('recall_KNN: %.3f' % recall_knn)
 print('f1-score_KNN : %.3f' % f1_knn)
 
 
-
+# Model initialization
 models = [
     ("KNN", KNeighborsClassifier(n_neighbors=3)),
     ("Logistic Regression", LogisticRegression(solver='lbfgs', max_iter=400)),
