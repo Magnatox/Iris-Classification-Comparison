@@ -15,13 +15,19 @@ from sklearn.preprocessing import LabelEncoder
 import missingno as msno
 
 # Loading dataset and checking missing values
-iris=pd.read_csv('Iris.csv')    
-msno.bar(iris.drop(columns=['Id']), figsize=(8, 6), color='skyblue')
+iris = pd.read_csv('Iris.csv')   
+iris = iris.drop(columns=['Id']) 
+msno.bar(iris, figsize=(8, 6), color='skyblue')
 plt.title("Missing Values Check")
+
+plot = sns.PairGrid(iris)
+plot.map_diag(plt.hist)
+plot.map_upper(plt.scatter)
+plot.map_lower(sns.kdeplot)
 
 
 # Splitting features and target variable
-X = iris.drop(columns=['Id', 'Species']).values
+X = iris.drop(columns=['Species']).values
 y = iris['Species'].values
 
 # Encoding target variable
@@ -181,8 +187,9 @@ plt.ylabel("Accuracy (%)")
 plt.xticks(rotation=45)
 plt.show()
 
+
 # Displaying pair plot
-sns.pairplot(iris.drop(columns=['Id']), hue="Species")
+sns.pairplot(iris, hue="Species")
 plt.show()
 
 
