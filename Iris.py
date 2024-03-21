@@ -15,8 +15,7 @@ from sklearn.preprocessing import LabelEncoder
 import missingno as msno
 
 # Loading dataset and checking missing values
-iris = pd.read_csv('Iris.csv')   
-iris = iris.drop(columns=['Id']) 
+iris = pd.read_csv('Iris.csv',index_col=0)   
 msno.bar(iris, figsize=(8, 6), color='skyblue')
 plt.title("Missing Values Check")
 
